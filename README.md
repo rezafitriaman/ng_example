@@ -1,2 +1,2 @@
 # ng_exemple
-practice with angularjs with a Tribal website https://dribbble.com/
+Practice angularjs with a Tribal website https://dribbble.com/

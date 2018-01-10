@@ -59,7 +59,7 @@ gulp.task('concatCss', function () {
 gulp.task('html', function () {
 	console.log('html work!');
 	gulp.src('public/*.html')
-	.pipe(reload({stream:true}));
+	.pipe(browserSync.stream());
 });
 
 /*browser-sync*/

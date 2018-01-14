@@ -6,164 +6,325 @@ body {
 }
 header {
 	background-color: rgba(47,47,47,0.98);
-	display: flex;
-	font-size: 16px;
-	.items {
-		padding-left: 0px;
-		list-style-type: none;
-		.item {
-			padding: 0 15px;
-			a {
-				color: #999;
-				text-decoration: none;
-				transition: all .3s ease-in-out;
-			}
-			a:hover {
-				color: white;
-			}
-			.active {
-				color: #fff;
-			}
-		}
-	}
-	.logo-hamburger {
+	.wrapper {
 		display: flex;
-    	align-items: center;
-   		margin-left: 20px;
-		.img {
-			width: 80px;
-		}
-		.hamburger {
-			width: 30px;
-    		height: 30px;
-    		padding: 5px;
-    		display: none;
-    		.fa {
-				color: #999;
-				transition: all .3s ease-in-out;
-    		}
-		}
-	}
-	.nav-wrapper {
-		width: 100%;
-		display: flex;
-		justify-content: space-between;
-		.left-nav {
-			display: flex;
-			align-items: center;
-			.items {
-				display: flex;
-				align-items: flex-start;
-				.item {
-					.dots {
-						padding-left: 0px;
-						list-style-type: none;
-						a {
-							.dot {
-								display: inline-block;
-								.content {
-									display: block;
-									height: 5px;
-									width: 5px;
-									background-color: #999;
-									border-radius: 50%;
-									margin-right: 2px;
-									transition: all .3s ease-in-out;
-								}
-							}
-						}
-						a:hover > .dot .content {
-							background-color: white;
-						}
-					}
+		font-size: 16px;
+		max-width: 1200px;
+		margin: 0 auto;
+		.items {
+			padding-left: 0px;
+			list-style-type: none;
+			.item {
+				padding: 0 15px;
+				a {
+					color: #999;
+					text-decoration: none;
+					transition: all .3s ease-in-out;
+				}
+				a:hover {
+					color: white;
+				}
+				.active {
+					color: #fff;
 				}
 			}
 		}
-		.right-nav {
+		.logo-hamburger {
 			display: flex;
-			align-items: center;
-			.items {
+	    	align-items: center;
+	   		margin-left: 20px;
+			.img {
+				width: 80px;
+			}
+			.hamburger {
+				width: 30px;
+	    		height: 30px;
+	    		padding: 5px;
+	    		display: none;
+	    		.fa {
+					color: #999;
+					transition: all .3s ease-in-out;
+	    		}
+			}
+		}
+		.nav-wrapper {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			.left-nav {
 				display: flex;
 				align-items: center;
-				#search {
-					position: relative;
-					border-radius: 3px;
-					.search-text {
-						border: none;
-						font-family: $font;
-						padding: 5px 5px 5px 24px;
-						font-size: 14px;
-					}
-					.fa-search {
-						color: #999;
-						position: absolute;
-					    top: 5px;
-					    left: 5px;
+				.items {
+					display: flex;
+					align-items: flex-start;
+					.item {
+						.dots {
+							padding-left: 0px;
+							list-style-type: none;
+							a {
+								.dot {
+									display: inline-block;
+									.content {
+										display: block;
+										height: 5px;
+										width: 5px;
+										background-color: #999;
+										border-radius: 50%;
+										margin-right: 2px;
+										transition: all .3s ease-in-out;
+									}
+								}
+							}
+							a:hover > .dot .content {
+								background-color: white;
+							}
+						}
 					}
 				}
-				.search-text:focus {
-					outline: none;
+			}
+			.right-nav {
+				display: flex;
+				align-items: center;
+				.items {
+					display: flex;
+					align-items: center;
+					#search {
+						position: relative;
+						border-radius: 3px;
+						.search-text {
+							border: none;
+							font-family: $font;
+							padding: 5px 5px 5px 24px;
+							font-size: 14px;
+						}
+						.fa-search {
+							color: #999;
+							position: absolute;
+						    top: 5px;
+						    left: 5px;
+						}
+					}
+					.search-text:focus {
+						outline: none;
+					}
 				}
 			}
 		}
 	}
 }
 
-/* Medium Devices, Desktops */
-@media only screen and (max-width : 992px) {
-	header {
+.filter {
+	width: 100%;
+	min-height: 50px;
+	border-bottom: 1px solid #e5e5e5;
+	background: #FEFEFE;
+	display: flex;
+	justify-content: center;
+	.items {
+		list-style-type: none;
+		padding-left: 0px;
 		display: flex;
-		flex-direction: column;
-		.logo-hamburger {
-			height: 50px;
-			margin:0 auto;
-			.hamburger {
-				display: block;
-				position: absolute;
-				right: 5px;
-			}
-			.hamburger:hover > .fa {
-				color: white;
+		.item{
+			margin-right: 18px;
+			.fa{
+				margin-left: 5px;
+				position: relative;
+			    bottom: 2px;
 			}
 		}
-		.hm-active {
-			height: auto!important;
-		}
-		.nav-wrapper {
-			height: 0px;
-    		overflow: hidden;
-    		transition: all 3s;
-			display: flex;
-			flex-direction: column;
-			.left-nav {
-				.items {
+	}
+}
+
+.content {
+	background-color: #E7E7E7;
+	    display: flex;
+	    justify-content: space-around;
+	    align-items: center;
+	.wrapper {
+		display: flex;
+		justify-content: flex-start;
+		align-content: center;
+		flex-wrap: wrap;
+		max-width: 1200px;
+		margin: 0 auto;
+		.inner {
+			margin: 20px;
+			box-sizing: border-box;
+		    display: block;
+		    height: 200px;
+		    background-color: white;
+			width: 200px;
+			border-radius: 2px;
+    		box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+    		position: relative;
+			.shots {
+				max-width: 100%;
+			    margin: 10px;
+			    display: block;
+			    height: 155px;
+				background-size: cover;
+				background-position: center;
+			} 
+			.views {
+				list-style-type: none;
+				padding-right: 10px;
+				display: flex;
+				justify-content: flex-end;
+				font-size: 13px;
+				color: #888888;
+				.item {
+					margin-left: 15px;
 					display: flex;
-					flex-direction: column;
-					align-items: flex-start;
-					margin-bottom: 0px;
-					margin-top: 0px;
-					width: 100%;
-					.item {
-						width: 100%;
-						padding: 15px;
-						border-top: 1px solid rgba(255,255,255,0.08);
+					.fa {
+						margin-right: 2px;
 					}
 				}
 			}
-			.right-nav {
-				.items {
-					width: 100%;
-					display: flex;
-					flex-direction: column;
-					align-items: flex-start;
-					margin-top: 0px;
-					.item {
+		}
+  	}
+  	/* .wrapper:after {
+  		content: "";
+  	
+  			    display: block;
+  			    height: 220px;
+  		flex-grow: 1;
+  				width: 220px;
+  	}  */
+
+
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+	header {
+		.wrapper {
+			display: flex;
+			flex-direction: column;
+			.logo-hamburger {
+				height: 50px;
+				margin:0 auto;
+				.hamburger {
+					display: block;
+					position: absolute;
+					right: 5px;
+				}
+				.hamburger:hover > .fa {
+					color: white;
+				}
+			}
+			.hm-active {
+				max-height: 1000px!important;
+			}
+			.nav-wrapper {
+				max-height: 0px;
+	    		overflow: hidden;
+	    		transition: all .3s ease-in-out;
+				display: flex;
+				flex-direction: column;
+				.left-nav {
+					.items {
+						display: flex;
+						flex-direction: column;
+						align-items: flex-start;
+						margin-bottom: 0px;
+						margin-top: 0px;
 						width: 100%;
-						padding: 15px;
-						border-top: 1px solid rgba(255,255,255,0.08);
+						.item {
+							width: 100%;
+							padding: 15px;
+							border-top: 1px solid rgba(255,255,255,0.08);
+						}
+					}
+				}
+				.right-nav {
+					.items {
+						width: 100%;
+						display: flex;
+						flex-direction: column;
+						align-items: flex-start;
+						margin-top: 0px;
+						.item {
+							width: 100%;
+							padding: 15px;
+							border-top: 1px solid rgba(255,255,255,0.08);
+						}
 					}
 				}
 			}
 		}
 	}
 }
+
+@media only screen and (max-width : 1216px) {
+	.content {
+		.wrapper {
+			max-width: 960px;
+			.inner {
+				width: 199px;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width : 1199px) {
+	.content {
+		.wrapper {
+			max-width: 960px;
+		}
+	}
+}
+
+@media only screen and (max-width : 972px) {
+
+	.content {
+		.wrapper {
+			max-width: 720px;
+		}
+	}
+}
+
+@media only screen and (max-width : 733px) {
+	.content {
+		.wrapper {
+			max-width: 720px;
+			.inner {
+				width: 194px;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width : 719px) {
+	.content {
+		.wrapper {
+			max-width: 720px;
+			.inner {
+				width: 193px;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width : 715px) {
+	.content {
+		.wrapper {
+			max-width: 464px;
+			.inner {
+				width: 192px;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width : 463px) {
+	.content {
+		.wrapper {
+			max-width: 365px;
+			.inner {
+				width: 140px;
+			}
+		}
+	}
+}
+

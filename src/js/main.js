@@ -1,4 +1,5 @@
 console.log('Hello angularjs')
+
 function hamburger() {
 	var hamburger = document.getElementById('hamburger');
 	var nav = document.getElementById('nav-wrapper');
@@ -21,4 +22,5 @@ function hamburger() {
 	    }
 	}
 }
+
 hamburger();

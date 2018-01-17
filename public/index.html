@@ -22,7 +22,7 @@
         <script src="js/angular.min.js"></script>
     </head>
     <!-- Angular directive are ng-app, ng-controller, ng-repeat, and ng-src, ng-click -->
-    <body>
+    <body ng-app="myApp">
         <header>
             <div class="wrapper">
                 <div class="logo-hamburger">
@@ -89,139 +89,9 @@
         </section>
 
         <!-- ng-app="myApp" define application scope -->
-        <section class="content" ng-app="myApp">
+        <section class="content" ng-controller="MainController">
             <!-- ng-controller="MainController" define controller scope -->
-            <div class="wrapper" ng-controller="MainController">
-
-                <blocks-info blocks="blocks"></blocks-info>
-
-               <!--  <div class="inner">
-                    <a href="#" class="shots" style="background-image: url('../../img/3trk_1x.jpg');"></a>
-                    <a href="#" class="hover">
-                        <strong>Airbnb for dinners</strong>
-                        <span class="comment">Who makes the best Italian food? Probably not that expensive tourist trap of a restaurant. I bet the locals are the best! Imagine if you could arra...</span>
-                        <span class="timeStamp"></span>
-                    </a> 
-                    <ul class="views">
-                        <li class="item"><i class="fa fa-eye" aria-hidden="true"></i><span class="view">123</span></li>
-                        <li class="item"><i class="fa fa-comment-o" aria-hidden="true"></i><span class="view">123</span></li>
-                        <li class="item"><i class="fa fa-heart" aria-hidden="true"></i>123</span></li>
-                    </ul>
-                    <h2 class="owner">
-                        <img src="https://cdn.dribbble.com/users/60166/avatars/mini/yogaLogo.png?1390870645" alt="photo" class="photo">
-                        <a href="#" class="name">Yoga Perdana</a>
-                    </h2>
-                </div>
-
-                <div class="inner">
-                    <a href="#" class="shots" style="background-image: url('../../img/derby_drib_1x.jpg');"></a>
-                    <a href="#" class="hover">
-                        <strong>Airbnb for dinners</strong>
-                        <span class="comment">Who makes the best Italian food? Probably not that expensive tourist trap of a restaurant. I bet the locals are the best! Imagine if you could arra...</span>
-                        <span class="timeStamp"></span>
-                    </a>
-                    <ul class="views">
-                        <li class="item"><i class="fa fa-eye" aria-hidden="true"></i><span class="view">123</span></li>
-                        <li class="item"><i class="fa fa-comment-o" aria-hidden="true"></i><span class="view">123</span></li>
-                        <li class="item"><i class="fa fa-heart" aria-hidden="true"></i>123</span></li>
-                    </ul>
-                    <h2 class="owner">
-                        <img src="https://cdn.dribbble.com/users/60166/avatars/mini/yogaLogo.png?1390870645" alt="photo" class="photo">
-                        <a href="#" class="name">Yoga Perdana</a>
-                    </h2>
-                </div>
-
-                <div class="inner">
-                    <a href="#" class="shots" style="background-image: url('../../img/donut_v2_single_1_1x.gif');"></a>
-                    <a href="#" class="hover">
-                        <strong>Airbnb for dinners</strong>
-                        <span class="comment">Who makes the best Italian food? Probably not that expensive tourist trap of a restaurant. I bet the locals are the best! Imagine if you could arra...</span>
-                        <span class="timeStamp"></span>
-                    </a>
-                    <ul class="views">
-                        <li class="item"><i class="fa fa-eye" aria-hidden="true"></i><span class="view">123</span></li>
-                        <li class="item"><i class="fa fa-comment-o" aria-hidden="true"></i><span class="view">123</span></li>
-                        <li class="item"><i class="fa fa-heart" aria-hidden="true"></i>123</span></li>
-                    </ul>
-                    <h2 class="owner">
-                        <img src="https://cdn.dribbble.com/users/60166/avatars/mini/yogaLogo.png?1390870645" alt="photo" class="photo">
-                        <a href="#" class="name">Yoga Perdana</a>
-                    </h2>
-                </div>
-
-                <div class="inner">
-                    <a href="#" class="shots" style="background-image: url('../../img/ckcocktails_drib_1x.jpg');"></a> <a href="#" class="hover">
-                        <strong>Airbnb for dinners</strong>
-                        <span class="comment">Who makes the best Italian food? Probably not that expensive tourist trap of a restaurant. I bet the locals are the best! Imagine if you could arra...</span>
-                        <span class="timeStamp"></span>
-                    </a>  
-                    <ul class="views">
-                        <li class="item"><i class="fa fa-eye" aria-hidden="true"></i><span class="view">123</span></li>
-                        <li class="item"><i class="fa fa-comment-o" aria-hidden="true"></i><span class="view">123</span></li>
-                        <li class="item"><i class="fa fa-heart" aria-hidden="true"></i>123</span></li>
-                    </ul>
-                    <h2 class="owner">
-                        <img src="https://cdn.dribbble.com/users/60166/avatars/mini/yogaLogo.png?1390870645" alt="photo" class="photo">
-                        <a href="#" class="name">Yoga Perdana</a>
-                    </h2>
-                </div>
-
-                <div class="inner">
-                    <a href="#" class="shots" style="background-image: url('../../img/3trk_1x.jpg');"></a>
-                    <a href="#" class="hover">
-                        <strong>Airbnb for dinners</strong>
-                        <span class="comment">Who makes the best Italian food? Probably not that expensive tourist trap of a restaurant. I bet the locals are the best! Imagine if you could arra...</span>
-                        <span class="timeStamp"></span>
-                    </a>   
-                    <ul class="views">
-                        <li class="item"><i class="fa fa-eye" aria-hidden="true"></i><span class="view">123</span></li>
-                        <li class="item"><i class="fa fa-comment-o" aria-hidden="true"></i><span class="view">123</span></li>
-                        <li class="item"><i class="fa fa-heart" aria-hidden="true"></i>123</span></li>
-                    </ul>
-                    <h2 class="owner">
-                        <img src="https://cdn.dribbble.com/users/60166/avatars/mini/yogaLogo.png?1390870645" alt="photo" class="photo">
-                        <a href="#" class="name">Yoga Perdana</a>
-                    </h2>
-                </div>
-
-                <div class="inner">
-                    <a href="#" class="shots" style="background-image: url('../../img/derby_drib_1x.jpg');"></a>
-                    <a href="#" class="hover">
-                        <strong>Airbnb for dinners</strong>
-                        <span class="comment">Who makes the best Italian food? Probably not that expensive tourist trap of a restaurant. I bet the locals are the best! Imagine if you could arra...</span>
-                        <span class="timeStamp"></span>
-                    </a>    
-                    <ul class="views">
-                        <li class="item"><i class="fa fa-eye" aria-hidden="true"></i><span class="view">123</span></li>
-                        <li class="item"><i class="fa fa-comment-o" aria-hidden="true"></i><span class="view">123</span></li>
-                        <li class="item"><i class="fa fa-heart" aria-hidden="true"></i>123</span></li>
-                    </ul>
-                    <h2 class="owner">
-                        <img src="https://cdn.dribbble.com/users/60166/avatars/mini/yogaLogo.png?1390870645" alt="photo" class="photo">
-                        <a href="#" class="name">Yoga Perdana</a>
-                    </h2>
-                </div>
-
-                <div class="inner">
-                    <a href="#" class="shots" style="background-image: url('../../img/donut_v2_single_1_1x.gif');"></a>
-                    <a href="#" class="hover">
-                        <strong>Airbnb for dinners</strong>
-                        <span class="comment">Who makes the best Italian food? Probably not that expensive tourist trap of a restaurant. I bet the locals are the best! Imagine if you could arra...</span>
-                        <span class="timeStamp"></span>
-                    </a>
-                    <ul class="views">
-                        <li class="item"><i class="fa fa-eye" aria-hidden="true"></i><span class="view">123</span></li>
-                        <li class="item"><i class="fa fa-comment-o" aria-hidden="true"></i><span class="view">123</span></li>
-                        <li class="item"><i class="fa fa-heart" aria-hidden="true"></i>123</span></li>
-                    </ul>
-                    <h2 class="owner">
-                        <img src="https://cdn.dribbble.com/users/60166/avatars/mini/yogaLogo.png?1390870645" alt="photo" class="photo">
-                        <a href="#" class="name">Yoga Perdana</a>
-                    </h2>
-                </div> -->
-
-
-            </div>
+            <blocks-info blocks="blocks" class="wrapper"></blocks-info>
 
         </section>
 

@@ -48,8 +48,32 @@ app.controller('MainController', ['$scope', function($scope) {
 			viewsView : 0,
 			viewsComment : 143,
 			viewsLikes : 0
+		},
+		{
+			ownerName : 'Nicole Jeuring',
+			ownerPhoto : 'https://cdn.dribbble.com/users/414979/avatars/mini/0160be9f90ac7d57429dd20ad3f2917f.png?1484569830',
+			background : "img/donut_v2_single_1_1x.gif",
+			hoverTitle : "Airbnb for dinners",
+			hoverSubtitle : "Continuing our Snug showcase. Feel free to check out attachment to see the dashboard screen of the property managers desktop/web app...",
+			hoverTimeStamp : new Date('2017', '04', '21'),
+			viewsView : 0,
+			viewsComment : 143,
+			viewsLikes : 0
+		},
+		{
+			ownerName : 'Siu Tshang',
+			ownerPhoto : 'https://cdn.dribbble.com/users/3715/avatars/mini/cmprofile.png?1413917909',
+			background : "img/woman2_1x.jpg",
+			hoverTitle : "Airbnb for dinners",
+			hoverSubtitle : "Continuing our Snug showcase. Feel free to check out attachment to see the dashboard screen of the property managers desktop/web app...",
+			hoverTimeStamp : new Date('2017', '04', '21'),
+			viewsView : 0,
+			viewsComment : 143,
+			viewsLikes : 0
 		}
 	]
+
+	/*this ng-click function has added to his own directive (blockInfo.js) under link: function*/
 	/*add like function on clicks on heart*/
 	$scope.likePlusOne = function(index) {
 		$scope.blocks[index].viewsLikes = $scope.blocks[index].viewsLikes + 1 
@@ -65,8 +89,16 @@ app.directive('blocksInfo', function() {
 	return {
 		restrict: 'E',
 		scope: {
-			blocks: '='
+			blocks: '=',
 		},
+		link: function (scope) {
+        scope.likePlusOne = function ($index) {
+            scope.blocks[$index].viewsLikes = scope.blocks[$index].viewsLikes + 1 
+        };
+        scope.viewPlusOne = function ($index) {
+        	scope.blocks[$index].viewsView += 1
+        }
+    },
 		templateUrl: 'js/directives/blocksInfo.html'
 	};
 });

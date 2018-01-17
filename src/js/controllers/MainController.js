@@ -1,5 +1,3 @@
-console.log('Angular app.js');
-var app = angular.module("myApp", []);
 console.log('Angular MainController.js');
 /*Add data to $scope in the controller so they can be displayed with expressions in the view.*/
 /*A controller manages the app's data*/
@@ -60,39 +58,3 @@ app.controller('MainController', ['$scope', function($scope) {
 	} 
 
 }]);
-console.log('directives blocksInfo.js');
-app.directive('blocksInfo', function() {
-	return {
-		restrict: 'E',
-		scope: {
-			blocks: '='
-		},
-		templateUrl: 'js/directives/blocksInfo.html'
-	};
-});
-console.log('Custom.js')
-
-function hamburger() {
-	var hamburger = document.getElementById('hamburger');
-	var nav = document.getElementById('nav-wrapper');
-
-	hamburger.addEventListener('click', function(event) {
-		event.preventDefault();
-		toggleShow();
-	});
-
-	hamburger.addEventListener('touchstart', function(event) {
-		event.preventDefault();
-		toggleShow();
-	});
-
-	function toggleShow() {
-	    if (nav.classList.contains('hm-active')) {
-	        nav.classList.remove("hm-active");
-	    } else {
-	        nav.classList.add("hm-active");
-	    }
-	}
-}
-
-hamburger();

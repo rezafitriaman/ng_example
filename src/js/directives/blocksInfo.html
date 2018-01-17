@@ -1,0 +1,19 @@
+<div class="inner" ng-repeat="block in blocks">
+    <a href="#" class="shots" style="background-image: url({{ block.background }});"></a>
+    <a href="#" class="hover" ng-click="viewPlusOne($index)">
+        <!-- An expression displays values on the page. | A filter formats the value of an expression -->
+        <strong>{{block.hoverTitle | uppercase}}</strong>
+        <span class="comment">{{block.hoverSubtitle}}</span>
+        <span class="timeStamp">{{block.hoverTimeStamp | date}}</span>
+    </a>
+    <ul class="views">
+        <li class="item"><i class="fa fa-eye" aria-hidden="true"></i><span class="view">{{block.viewsView}}</span></li>
+        <li class="item"><i class="fa fa-comment-o" aria-hidden="true"></i><span class="view">{{block.viewsComment}}</span></li>
+        <li class="item" ng-click="likePlusOne($index)"><i class="fa fa-heart" aria-hidden="true"></i><span class="view">{{block.viewsLikes}}</span></li>
+    </ul>
+    <h2 class="owner">
+        <img ng-src="{{block.ownerPhoto}}" alt="photo" class="photo">
+        <a href="#" class="name">{{block.ownerName}}</a>
+    </h2>
+</div>
+

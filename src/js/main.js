@@ -1,4 +1,4 @@
-console.log('Hello angularjs')
+console.log('Custom.js')
 
 function hamburger() {
 	var hamburger = document.getElementById('hamburger');

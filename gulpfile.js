@@ -68,6 +68,13 @@ gulp.task('copy_directives_html', function() {
     .pipe(gulp.dest('public/js/directives'));
 });
 
+/*make view html go to public directives*/
+gulp.task('copy_views_html', function() {
+	console.log('copy_views_html work!');
+    gulp.src('src/views/*.html')
+    .pipe(gulp.dest('public/views'));
+});
+
 
 /*''''''''''''''''End AngularJs''''''''''''''''''*/
 
@@ -116,6 +123,7 @@ gulp.task('browser-sync', function () {
 gulp.task('watch', function() {
 	console.log('watch');
 	gulp.watch('src/js/directives/*.html',['copy_directives_html']);
+	gulp.watch('src/views/*.html',['copy_views_html']);
 	gulp.watch('src/js/**/*.js', ['concat']);
 	/*gulp.watch('cv/js/dev/*.js', ['scripts']);*/
 	gulp.watch('src/js/app.js', ['appJs']);
@@ -126,4 +134,4 @@ gulp.task('watch', function() {
 });
 
 /*default*/
-gulp.task('default',['copy_directives_html', 'concat', 'appJs', 'MainController', 'sass', 'concatCss', 'html', 'browser-sync', 'watch']);
+gulp.task('default',['copy_directives_html', 'copy_views_html', 'concat', 'appJs', 'MainController', 'sass', 'concatCss', 'html', 'browser-sync', 'watch']);

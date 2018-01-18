@@ -20,6 +20,7 @@
 
         <!-- Include the AngularJS library -->
         <script src="js/angular.min.js"></script>
+        <script src="js/angular-route.min.js"></script>
     </head>
     <!-- Angular directive are ng-app, ng-controller, ng-repeat, and ng-src, ng-click -->
     <body ng-app="myApp">
@@ -80,19 +81,17 @@
             </div>
         </header>
 
-        <section class="filter">
+        <section class="filter" ng-controller="MainController">
             <ul class="items">
-                <li class="item"><span>Poular</span><i class="fa fa-sort-desc" aria-hidden="true"></i></li>
-                <li class="item"><span>Shots</span><i class="fa fa-sort-desc" aria-hidden="true"></i></li>
-                <li class="item"><span>Now</span><i class="fa fa-sort-desc" aria-hidden="true"></i></li>
+                <filter-info class="items" filters="filter1"></filter-info>
             </ul>
         </section>
 
         <!-- ng-app="myApp" define application scope -->
         <section class="content" ng-controller="MainController">
+            <div ng-view></div>
             <!-- ng-controller="MainController" define controller scope -->
-            <blocks-info blocks="blocks" class="wrapper"></blocks-info>
-
+            <!-- <blocks-info blocks="blocks" class="wrapper"></blocks-info> -->
         </section>
 
         <!-- js -->

@@ -4,20 +4,141 @@ console.log('Angular app.js');
 
 var app = angular.module("myApp", ['ngRoute']);
 app.config(function($routeProvider) {
+	
 	$routeProvider
 	.when('/', {
 		controller: 'MainController',
 		templateUrl: 'views/home.html'
 	})
+	.when('/detail:id', {
+		controller: 'detailPhotoController',
+		templateUrl: 'views/detailPhoto.html'
+	})
 	.otherwise({
 		redirectTo: '/'
 	});
 });
+console.log('Angular detailPhotoController.js');
+app.controller('detailPhotoController', ['$scope', 'ownerService', '$routeParams', function($scope, ownerService, $routeParams) {
+	console.log(ownerService[$routeParams.id])
+	$scope.blockDetail = ownerService[$routeParams.id];
+}]);
 console.log('Angular MainController.js');
 /*Add data to $scope in the controller so they can be displayed with expressions in the view.*/
 /*A controller manages the app's data*/
-app.controller('MainController', ['$scope', function($scope) {
-	$scope.blocks = [
+app.controller('MainController', ['$scope', 'ownerService', function($scope, ownerService) {
+	
+	$scope.blocks = ownerService;
+
+	$scope.filter1 = {
+		one: 'popular',
+		two: 'Shots',
+		three: 'Now'
+	}
+
+	$scope.filter2 = {
+		one: 'popular Two',
+		two: 'Shots Two',
+		three: 'Now Two'
+	}
+	
+	$scope.filter3 = {
+		one: 'popular Three',
+		two: 'Shots Three',
+		three: 'Now Three'
+	}
+
+	/*this ng-click function has added to his own directive (blockInfo.js) under link: function*/
+	/*add like function on clicks on heart*/
+	/*$scope.likePlusOne = function(index) {
+		$scope.blocks[index].viewsLikes = $scope.blocks[index].viewsLikes + 1 
+	}*/
+	/*add view function on click on block*/
+	/*$scope.viewPlusOne = function(index) {
+		$scope.blocks[index].viewsView = $scope.blocks[index].viewsView + 1
+	} */
+
+}]);
+console.log('directives blockDetail.js');
+
+app.directive('blockDetail', function() {
+	return {
+		restrict: 'E',
+		scope: {
+			details: '='
+		},
+		templateUrl: 'js/directives/blockDetail.html'
+	}
+});
+console.log('directives blocksInfo.js');
+/*We used app.directive to create a new directive named 'installApp'.
+
+The directive contains the three options restrict, scope, and templateUrl that we saw before in the 'appInfo' directive.
+It also contains a fourth option link. The link is used to create interactive directives that respond to user actions.
+The link function takes three inputs:
+
+1.scope refers to the directive's scope. Any new properties attached to $scope will become available to use in the directive's template.
+2.element refers to the directive's HTML element.
+3.attrs contains the element's attributes.*/
+app.directive('blocksInfo', function() {
+	return {
+		restrict: 'E',
+		scope: {
+			blocks: '=',
+			blocksLimit: '@'
+		},
+		link: function (scope) {
+			/*console.log(scope)*/
+	        scope.likePlusOne = function ($index) {
+	            scope.blocks[$index].viewsLikes += 1 
+	        }
+	        scope.viewPlusOne = function ($index) {
+	        	scope.blocks[$index].viewsView += 1
+	        }
+	    },
+		templateUrl: 'js/directives/blocksInfo.html'
+	};
+});
+console.log('directives filter.js');
+app.directive('filterInfo', function() {
+	return {
+		restrict: 'E',
+		scope: {
+			filters: '='
+		},
+		templateUrl: 'js/directives/filters.html'
+	};
+});
+console.log('Custom.js')
+
+function hamburger() {
+	var hamburger = document.getElementById('hamburger');
+	var nav = document.getElementById('nav-wrapper');
+
+	hamburger.addEventListener('click', function(event) {
+		event.preventDefault();
+		toggleShow();
+	});
+
+	hamburger.addEventListener('touchstart', function(event) {
+		event.preventDefault();
+		toggleShow();
+	});
+
+	function toggleShow() {
+	    if (nav.classList.contains('hm-active')) {
+	        nav.classList.remove("hm-active");
+	    } else {
+	        nav.classList.add("hm-active");
+	    }
+	}
+}
+
+hamburger();
+
+console.log('service ownerService.js');
+app.factory( 'ownerService', function() {
+	var data =  [
 		{
 			ownerName : 'Yoga Perdana',
 			ownerPhoto : 'https://cdn.dribbble.com/users/60166/avatars/mini/yogaLogo.png?1390870645',
@@ -85,98 +206,6 @@ app.controller('MainController', ['$scope', function($scope) {
 			viewsLikes : 0
 		}
 	]
-
-	$scope.filter1 = {
-		one: 'popular',
-		two: 'Shots',
-		three: 'Now'
-	}
-
-	$scope.filter2 = {
-		one: 'popular Two',
-		two: 'Shots Two',
-		three: 'Now Two'
-	}
 	
-	$scope.filter3 = {
-		one: 'popular Three',
-		two: 'Shots Three',
-		three: 'Now Three'
-	}
-
-	/*this ng-click function has added to his own directive (blockInfo.js) under link: function*/
-	/*add like function on clicks on heart*/
-	/*$scope.likePlusOne = function(index) {
-		$scope.blocks[index].viewsLikes = $scope.blocks[index].viewsLikes + 1 
-	}*/
-	/*add view function on click on block*/
-	/*$scope.viewPlusOne = function(index) {
-		$scope.blocks[index].viewsView = $scope.blocks[index].viewsView + 1
-	} */
-
-}]);
-console.log('directives blocksInfo.js');
-/*We used app.directive to create a new directive named 'installApp'.
-
-The directive contains the three options restrict, scope, and templateUrl that we saw before in the 'appInfo' directive.
-It also contains a fourth option link. The link is used to create interactive directives that respond to user actions.
-The link function takes three inputs:
-
-1.scope refers to the directive's scope. Any new properties attached to $scope will become available to use in the directive's template.
-2.element refers to the directive's HTML element.
-3.attrs contains the element's attributes.*/
-app.directive('blocksInfo', function() {
-	return {
-		restrict: 'E',
-		scope: {
-			blocks: '=',
-			blocksLimit: '@'
-		},
-		link: function (scope) {
-			/*console.log(scope)*/
-	        scope.likePlusOne = function ($index) {
-	            scope.blocks[$index].viewsLikes += 1 
-	        }
-	        scope.viewPlusOne = function ($index) {
-	        	scope.blocks[$index].viewsView += 1
-	        }
-	    },
-		templateUrl: 'js/directives/blocksInfo.html'
-	};
+	return data;
 });
-console.log('directives filter.js');
-app.directive('filterInfo', function() {
-	return {
-		restrict: 'E',
-		scope: {
-			filters: '='
-		},
-		templateUrl: 'js/directives/filters.html'
-	};
-});
-console.log('Custom.js')
-
-function hamburger() {
-	var hamburger = document.getElementById('hamburger');
-	var nav = document.getElementById('nav-wrapper');
-
-	hamburger.addEventListener('click', function(event) {
-		event.preventDefault();
-		toggleShow();
-	});
-
-	hamburger.addEventListener('touchstart', function(event) {
-		event.preventDefault();
-		toggleShow();
-	});
-
-	function toggleShow() {
-	    if (nav.classList.contains('hm-active')) {
-	        nav.classList.remove("hm-active");
-	    } else {
-	        nav.classList.add("hm-active");
-	    }
-	}
-}
-
-hamburger();

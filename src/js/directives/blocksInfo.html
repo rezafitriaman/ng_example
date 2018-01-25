@@ -1,6 +1,6 @@
 <div class="inner"  ng-repeat="block in blocks | limitTo:blocksLimit">
-    <a href="#" class="shots" style="background-image: url({{ block.background }});"></a>
-    <a href="#" class="hover">
+    <div class="shots" style="background-image: url({{ block.background }});"></div>
+    <a ng-href="#!/detail{{$index}}" class="hover">
         <!-- An expression displays values on the page. | A filter formats the value of an expression -->
         <strong>{{block.hoverTitle | uppercase}}</strong>
         <span class="comment">{{block.hoverSubtitle}}</span>
@@ -13,7 +13,7 @@
     </ul>
     <h2 class="owner">
         <img ng-src="{{block.ownerPhoto}}" alt="photo" class="photo">
-        <a href="#" class="name">{{block.ownerName}}</a>
+        <a href="#!/detail" class="name">{{block.ownerName}}</a>
     </h2>
 </div>
 

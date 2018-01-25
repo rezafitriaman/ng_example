@@ -22,7 +22,10 @@ gulp.task('concat', function() {
   	.pipe(order([
   		"src/js/app.js",
   		"src/js/controllers/MainController.js",
+  		"src/js/controllers/detailPhotoController.js",
   		"src/js/directives/blocksInfo.js",
+  		"src/js/directives/blockDetail.js",
+  		"src/js/service/ownerService.js",
   		"src/js/main.js"
   	]))
     .pipe(concat('all.js'))
@@ -41,38 +44,40 @@ gulp.task('concat', function() {
 
 /*''''''''''''''''AngularJs''''''''''''''''''*/
 /*make app.js go to public*/
-gulp.task('appJs',function() {
+/*gulp.task('appJs',function() {
 	console.log('appJs work!');
 	gulp.src(['src/js/app.js'])
 	.pipe(rename('app.min.js'))
 	.pipe(uglify())
 	.pipe(gulp.dest('public/js'))
 	.pipe(reload({stream:true}));
-});
+});*/
 
 /*make controller go to public*/
 //MainControllers
-gulp.task('MainController',function() {
+/*gulp.task('MainController',function() {
 	console.log('MainControllers work!');
 	gulp.src(['src/js/controllers/MainController.js'])
 	.pipe(rename('MainController.min.js'))
 	.pipe(uglify())
 	.pipe(gulp.dest('public/js/controllers'))
 	.pipe(reload({stream:true}));
-});
+});*/
 
 /*make directives html go to public directives*/
 gulp.task('copy_directives_html', function() {
 	console.log('copy_directives_html work!');
     gulp.src('src/js/directives/*.html')
-    .pipe(gulp.dest('public/js/directives'));
+    .pipe(gulp.dest('public/js/directives'))
+    .pipe(reload({stream:true}));
 });
 
 /*make view html go to public directives*/
 gulp.task('copy_views_html', function() {
 	console.log('copy_views_html work!');
     gulp.src('src/views/*.html')
-    .pipe(gulp.dest('public/views'));
+    .pipe(gulp.dest('public/views'))
+    .pipe(reload({stream:true}));
 });
 
 
@@ -80,7 +85,7 @@ gulp.task('copy_views_html', function() {
 
 gulp.task('sass', function () {
 	console.log('sass work!');
-  return gulp.src('src/scss/*.scss')
+  	return gulp.src('src/scss/*.scss')
   	.pipe(plumber())
   	.pipe(sourcemaps.init())
 	.pipe(sass().on('error', sass.logError))
@@ -94,10 +99,10 @@ gulp.task('sass', function () {
 
 gulp.task('concatCss', function () {
 	console.log('concatCss work!');
-  return gulp.src('public/css/style.css')
+  	return gulp.src('public/css/style.css')
   	.pipe(sourcemaps.init())
-	    .pipe(concatCss("all.css"))
-	    .pipe(gulp.dest('public/css/all'))
+	.pipe(concatCss("all.css"))
+	 .pipe(gulp.dest('public/css/all'))
     .pipe(sourcemaps.write())
     .pipe(reload({stream:true}));
 });
@@ -126,12 +131,12 @@ gulp.task('watch', function() {
 	gulp.watch('src/views/*.html',['copy_views_html']);
 	gulp.watch('src/js/**/*.js', ['concat']);
 	/*gulp.watch('cv/js/dev/*.js', ['scripts']);*/
-	gulp.watch('src/js/app.js', ['appJs']);
-	gulp.watch('src/js/controllers/MainController.js', ['MainController']);
+/*	gulp.watch('src/js/app.js', ['appJs']);*/
+/*	gulp.watch('src/js/controllers/MainController.js', ['MainController']);*/
 	gulp.watch('src/scss/style.scss', ['sass']);
 	gulp.watch('public/css/style.css', ['concatCss']);
 	gulp.watch('public/*.html', ['html']);
 });
 
 /*default*/
-gulp.task('default',['copy_directives_html', 'copy_views_html', 'concat', 'appJs', 'MainController', 'sass', 'concatCss', 'html', 'browser-sync', 'watch']);
+gulp.task('default',['copy_directives_html', 'copy_views_html', 'concat', 'sass', 'concatCss', 'html', 'browser-sync', 'watch']);

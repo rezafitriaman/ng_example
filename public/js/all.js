@@ -10,7 +10,7 @@ app.config(function($routeProvider) {
 		controller: 'MainController',
 		templateUrl: 'views/home.html'
 	})
-	.when('/detail:id', {
+	.when('/:index', {
 		controller: 'detailPhotoController',
 		templateUrl: 'views/detailPhoto.html'
 	})
@@ -20,8 +20,7 @@ app.config(function($routeProvider) {
 });
 console.log('Angular detailPhotoController.js');
 app.controller('detailPhotoController', ['$scope', 'ownerService', '$routeParams', function($scope, ownerService, $routeParams) {
-	console.log(ownerService[$routeParams.id])
-	$scope.blockDetail = ownerService[$routeParams.id];
+	$scope.blockDetail = ownerService[$routeParams.index];
 }]);
 console.log('Angular MainController.js');
 /*Add data to $scope in the controller so they can be displayed with expressions in the view.*/
@@ -203,9 +202,34 @@ app.factory( 'ownerService', function() {
 			hoverTimeStamp : new Date('2017', '04', '21'),
 			viewsView : 0,
 			viewsComment : 143,
-			viewsLikes : 0
+			viewsLikes : 0,
+			morePictures: [
+				'https://cdn.dribbble.com/users/1151239/screenshots/4089501/_library-positioning_teaser.gif',
+				'https://cdn.dribbble.com/users/1151239/screenshots/4088560/bookstore_positioning_teaser.jpg',
+				'https://cdn.dribbble.com/users/1151239/screenshots/4067110/reading02_teaser.jpg',
+				'https://cdn.dribbble.com/users/1151239/screenshots/4047529/book_teaser.jpg'
+
+			]
+		},
+		{
+			ownerName : 'Sander Meijer',
+			ownerPhoto : 'https://cdn.dribbble.com/users/14059/avatars/mini/fbf6169ddf58e93ca4fd6645af81371b.jpg?1514924171',
+			background : "https://cdn.dribbble.com/users/14059/screenshots/4146722/embiidtowns_teaser.jpg",
+			hoverTitle : "Hello Dribbble!",
+			hoverSubtitle : "Hello Dribbble community! I really want to thank @Fengbo Li so much for the invite! Looking forward to posting a lot of cool designs, interacting a...",
+			hoverTimeStamp : new Date('2018', '01', '26'),
+			viewsView : 0,
+			viewsComment : 143,
+			viewsLikes : 0,
+			morePictures: [
+				'https://cdn.dribbble.com/users/60166/screenshots/4144350/bird_teaser.jpg',
+				'https://cdn.dribbble.com/users/60166/screenshots/4139998/drop___wave_teaser.jpg',
+				'https://cdn.dribbble.com/users/60166/screenshots/4135289/wave_teaser.jpg',
+				'https://cdn.dribbble.com/users/60166/screenshots/4130107/p_logo_teaser.jpg'
+
+			]
 		}
 	]
-	
+
 	return data;
 });

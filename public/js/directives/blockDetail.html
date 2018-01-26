@@ -1,3 +1,53 @@
-<div ng-controller="detailPhotoController">
-	<div>{{details.ownerName}}</div>
+<div class="wrapper">
+	<div class="inner-detail">
+		<div class="owner-info">
+			<img ng-src="{{details.ownerPhoto}}">
+			<ul class="items">
+				<li class="item"><h1>{{details.hoverTitle | uppercase}}</h1></li>
+				<li class="item"><p>By <span>{{details.ownerName}}</span> on {{details.hoverTimeStamp | date}}</p></li>
+			</ul>
+		</div>
+		<div class="content">
+			<div class="shots">
+				<img src="{{details.background}}" alt="main-pic">
+			</div>
+			<div class="info">
+				<ul class="likes">
+					<li class="item">
+						<i class="fa fa-heart" aria-hidden="true"></i>
+						<span class="view">Like?</span>
+					</li>
+					<li class="item">
+	                	<span class="view">{{details.viewsLikes}} likes</span>
+					</li>
+				</ul>
+				<ul class="share">
+					<li class="item">
+						<i class="fa fa-eye" aria-hidden="true"></i>
+						<span class="view">Share</span>
+					</li>
+					<li class="item">
+	                	<span class="view">{{details.viewsView}} views</span>
+					</li>
+				</ul>
+				<ul class="comment">
+					<li class="item">
+						<i class="fa fa-comment-o" aria-hidden="true"></i>
+						<span class="view">Comment</span>
+					</li>
+					<li class="item">
+	                	<span class="view">{{details.viewsComment}} comments</span>
+					</li>
+				</ul>
+				<div class="more">
+					<h2>More from {{details.ownerName}}</h2>
+					<ul class="items">
+						<li class="item" ng-repeat="picture in details.morePictures">
+							<img ng-src="{{picture}}" alt="more-pic">
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

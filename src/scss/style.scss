@@ -137,10 +137,9 @@ header {
 	}
 }
 
-.content {
-	    display: flex;
-	    justify-content: space-around;
-	    align-items: center;
+/*Home view*/
+.home-content {
+
 	.wrapper {
 		display: flex;
 		justify-content: flex-start;
@@ -243,17 +242,87 @@ header {
 			}
 		}
   	}
-  	/* .wrapper:after {
-  		content: "";
-  	
-  			    display: block;
-  			    height: 220px;
-  		flex-grow: 1;
-  				width: 220px;
-  	}  */
+}
 
-
-
+/*detail view*/
+.detail-content {
+	.wrapper {
+		max-width: 1200px;
+		margin: 0 auto;
+		display: flex;
+		.inner-detail {
+			width: 100%;
+			.owner-info {
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;
+				margin: 50px 0 30px 0;
+				img {
+					height: 50px;
+				    width: 50px;
+				    border-radius: 50%;
+				}
+				.items {
+					margin: 0px;
+					padding-left: 15px;
+					list-style-type: none;
+					h1 {
+						font-size: 18px;
+					}
+					p {
+						margin: 0px;
+						color: #999
+					}
+				}
+			}
+			.content {
+				display: flex;
+				.shots {
+					flex-grow: 1;
+					background-color: white;
+    				display: block;
+					img {
+				    	display: block;
+				    	width: 95%;
+    					padding: 20px;
+					}
+				}
+				.info {
+					flex-grow: 0;
+					margin-left: 65px;
+					.likes, .share, .comment {
+						list-style-type: none;
+						padding-left: 0px;
+						display: flex;
+    					justify-content: space-between;
+    					border-bottom: 1px solid #999;
+    					padding-bottom: 15px;
+    					color: #999;
+					}
+					.more {
+						h2 {
+							font-size: 16px;
+							font-weight: 500;
+						}
+						.items {
+							list-style-type: none;
+							padding-left: 0;
+							display: flex;
+						    flex-wrap: wrap;
+						    max-width: 400px;
+						    justify-content: space-between;
+						    border-bottom: 1px solid #999;
+    						padding-bottom: 15px;
+						    img {
+						    	width: 190px;
+						    	margin-bottom: 15px;
+						    }
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 /* Medium Devices, Desktops */
@@ -317,28 +386,41 @@ header {
 	}
 }
 
+/*Home view*/
 @media only screen and (max-width : 1216px) {
-	.content {
+	.home-content, .detail-content {
 		.wrapper {
 			max-width: 960px;
 			.inner {
 				width: 199px;
 			}
+			.content {
+				flex-direction: column;
+			}
 		}
+	}
+
+	.detail-content .wrapper .inner-detail .content .info {
+		margin-left: 0px;
+	}
+
+	.detail-content .wrapper .inner-detail .content .info .more .items {
+		max-width: 100%;
 	}
 }
 
 @media only screen and (max-width : 1199px) {
-	.content {
+	.home-content, .detail-content {
 		.wrapper {
 			max-width: 960px;
+
 		}
 	}
 }
 
 @media only screen and (max-width : 972px) {
 
-	.content {
+	.home-content, .detail-content {
 		.wrapper {
 			max-width: 720px;
 		}
@@ -346,7 +428,7 @@ header {
 }
 
 @media only screen and (max-width : 733px) {
-	.content {
+	.home-content, .detail-content {
 		.wrapper {
 			max-width: 720px;
 			.inner {
@@ -357,7 +439,7 @@ header {
 }
 
 @media only screen and (max-width : 719px) {
-	.content {
+	.home-content, .detail-content {
 		.wrapper {
 			max-width: 720px;
 			.inner {
@@ -368,7 +450,7 @@ header {
 }
 
 @media only screen and (max-width : 715px) {
-	.content {
+	.home-content, .detail-content {
 		.wrapper {
 			max-width: 464px;
 			.inner {
@@ -376,10 +458,15 @@ header {
 			}
 		}
 	}
+	.detail-content .wrapper .inner-detail .content .shots img {
+	    display: block;
+	    width: 92%;
+	    padding: 20px;
+	}
 }
 
 @media only screen and (max-width : 463px) {
-	.content {
+	.home-content, .detail-content {
 		.wrapper {
 			max-width: 365px;
 			.inner {

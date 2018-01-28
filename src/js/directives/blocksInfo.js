@@ -15,13 +15,12 @@ app.directive('blocksInfo', function() {
 			blocks: '=',
 			blocksLimit: '@'
 		},
-		link: function (scope) {
-			/*console.log(scope)*/
-	        scope.likePlusOne = function ($index) {
-	            scope.blocks[$index].viewsLikes += 1 
+		link: function ($scope) {
+	        $scope.likePlusOne = function ($index) {
+	            $scope.blocks[$index].viewsLikes += 1 
 	        }
-	        scope.viewPlusOne = function ($index) {
-	        	scope.blocks[$index].viewsView += 1
+	        $scope.viewPlusOne = function ($index) {
+	        	$scope.blocks[$index].viewsView += 1
 	        }
 	    },
 		templateUrl: 'js/directives/blocksInfo.html'

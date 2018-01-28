@@ -10,7 +10,7 @@ app.config(function($routeProvider) {
 		controller: 'MainController',
 		templateUrl: 'views/home.html'
 	})
-	.when('/:index', {
+	.when('/id_:index', {
 		controller: 'detailPhotoController',
 		templateUrl: 'views/detailPhoto.html'
 	})
@@ -66,6 +66,11 @@ app.directive('blockDetail', function() {
 		scope: {
 			details: '='
 		},
+		link: function($scope, elem, attr) {
+			$scope.likePlusOneB = function() {
+				$scope.details.viewsLikes += 1;
+			}
+		},
 		templateUrl: 'js/directives/blockDetail.html'
 	}
 });
@@ -86,13 +91,12 @@ app.directive('blocksInfo', function() {
 			blocks: '=',
 			blocksLimit: '@'
 		},
-		link: function (scope) {
-			/*console.log(scope)*/
-	        scope.likePlusOne = function ($index) {
-	            scope.blocks[$index].viewsLikes += 1 
+		link: function ($scope) {
+	        $scope.likePlusOne = function ($index) {
+	            $scope.blocks[$index].viewsLikes += 1 
 	        }
-	        scope.viewPlusOne = function ($index) {
-	        	scope.blocks[$index].viewsView += 1
+	        $scope.viewPlusOne = function ($index) {
+	        	$scope.blocks[$index].viewsView += 1
 	        }
 	    },
 		templateUrl: 'js/directives/blocksInfo.html'
@@ -147,7 +151,8 @@ app.factory( 'ownerService', function() {
 			hoverTimeStamp : new Date('2018', '01', '01'),
 			viewsView : 0,
 			viewsComment : 133,
-			viewsLikes : 0
+			viewsLikes : 0,
+			morePictures: []
 		},
 		{
 			ownerName : 'Reza Fitriaman',
@@ -158,7 +163,8 @@ app.factory( 'ownerService', function() {
 			hoverTimeStamp : new Date('2017', '02', '11'),
 			viewsView : 0,
 			viewsComment : 193,
-			viewsLikes : 0
+			viewsLikes : 0,
+			morePictures: []
 		},
 		{
 			ownerName : 'Rens Hendriks',
@@ -169,7 +175,8 @@ app.factory( 'ownerService', function() {
 			hoverTimeStamp : new Date('2017', '06', '11'),
 			viewsView : 0,
 			viewsComment : 193,
-			viewsLikes : 0
+			viewsLikes : 0,
+			morePictures: []
 		},
 		{
 			ownerName : 'Jarno Drent',
@@ -180,7 +187,8 @@ app.factory( 'ownerService', function() {
 			hoverTimeStamp : new Date('2017', '04', '21'),
 			viewsView : 0,
 			viewsComment : 143,
-			viewsLikes : 0
+			viewsLikes : 0,
+			morePictures: []
 		},
 		{
 			ownerName : 'Nicole Jeuring',
@@ -191,7 +199,8 @@ app.factory( 'ownerService', function() {
 			hoverTimeStamp : new Date('2017', '04', '21'),
 			viewsView : 0,
 			viewsComment : 143,
-			viewsLikes : 0
+			viewsLikes : 0,
+			morePictures: []
 		},
 		{
 			ownerName : 'Siu Tshang',
@@ -217,6 +226,24 @@ app.factory( 'ownerService', function() {
 			background : "https://cdn.dribbble.com/users/14059/screenshots/4146722/embiidtowns_teaser.jpg",
 			hoverTitle : "Hello Dribbble!",
 			hoverSubtitle : "Hello Dribbble community! I really want to thank @Fengbo Li so much for the invite! Looking forward to posting a lot of cool designs, interacting a...",
+			hoverTimeStamp : new Date('2018', '01', '26'),
+			viewsView : 0,
+			viewsComment : 143,
+			viewsLikes : 0,
+			morePictures: [
+				'https://cdn.dribbble.com/users/60166/screenshots/4144350/bird_teaser.jpg',
+				'https://cdn.dribbble.com/users/60166/screenshots/4139998/drop___wave_teaser.jpg',
+				'https://cdn.dribbble.com/users/60166/screenshots/4135289/wave_teaser.jpg',
+				'https://cdn.dribbble.com/users/60166/screenshots/4130107/p_logo_teaser.jpg'
+
+			]
+		},
+		{
+			ownerName : 'Pedro Reyes',
+			ownerPhoto : 'https://cdn.dribbble.com/users/283883/avatars/mini/fc0bea5eac21175d35275254cb5cc269.jpg?1431950657',
+			background : "https://cdn.dribbble.com/users/1162077/screenshots/4149479/creative-workspace_teaser.png",
+			hoverTitle : "Hello Dribbble!",
+			hoverSubtitle : "Hey guys, Long time no see I have just started my job, there are many things to do. The movie Reviews app, all the interface are here, hope you l...",
 			hoverTimeStamp : new Date('2018', '01', '26'),
 			viewsView : 0,
 			viewsComment : 143,

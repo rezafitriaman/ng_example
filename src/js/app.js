@@ -10,7 +10,7 @@ app.config(function($routeProvider) {
 		controller: 'MainController',
 		templateUrl: 'views/home.html'
 	})
-	.when('/:index', {
+	.when('/id_:index', {
 		controller: 'detailPhotoController',
 		templateUrl: 'views/detailPhoto.html'
 	})

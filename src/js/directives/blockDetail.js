@@ -6,6 +6,11 @@ app.directive('blockDetail', function() {
 		scope: {
 			details: '='
 		},
+		link: function($scope, elem, attr) {
+			$scope.likePlusOneB = function() {
+				$scope.details.viewsLikes += 1;
+			}
+		},
 		templateUrl: 'js/directives/blockDetail.html'
 	}
 });
